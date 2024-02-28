@@ -1,10 +1,17 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  Suspense,
+  lazy,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
-import { Box, Stack } from "@mui/material";
+import { Box, CircularProgress, Stack } from "@mui/material";
 import videojs from "video.js";
 import Player from "video.js/dist/types/player";
 
-import VideoJsPlayer from "./components/common/VideoJsPlayer";
 import useOffSetTop from "./hooks/useOffSetTop";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
@@ -14,6 +21,10 @@ import MaxLineTypography from "./components/MaxLineTypography";
 import MoreInfoButton from "./components/common/ui/MoreInfoButton";
 import MaturityRate from "./components/MaturityRate";
 import NetflixIconButton from "./components/NetflixIconButton";
+
+const LazyVideoJsPlayer = lazy(
+  () => import("./components/common/VideoJsPlayer")
+);
 
 function HeroSection() {
   const playerRef = useRef<Player | null>(null);
@@ -112,38 +123,12 @@ function HeroSection() {
                 position: "absolute",
               }}
             >
-              <VideoJsPlayer
-                options={videoJsOptions}
-                onReady={handlePlayerReady}
-              />
-              <Box
-                sx={{
-                  background: `linear-gradient(77deg,rgba(0,0,0,.6),transparent 85%)`,
-                  top: 0,
-                  left: 0,
-                  bottom: 0,
-                  right: "26.09%",
-                  opacity: 1,
-                  position: "absolute",
-                  transition: "opacity .5s",
-                }}
-              />
-              <Box
-                sx={{
-                  backgroundColor: "transparent",
-                  backgroundImage:
-                    "linear-gradient(180deg,hsla(0,0%,8%,0) 0,hsla(0,0%,8%,.15) 15%,hsla(0,0%,8%,.35) 29%,hsla(0,0%,8%,.58) 44%,#141414 68%,#141414)",
-                  backgroundRepeat: "repeat-x",
-                  backgroundPosition: "0px top",
-                  backgroundSize: "100% 100%",
-                  bottom: 0,
-                  position: "absolute",
-                  height: "20.7vw",
-                  opacity: 1,
-                  top: "auto",
-                  width: "100%",
-                }}
-              />
+              <Suspense fallback={<CircularProgress />}>
+                <LazyVideoJsPlayer
+                  options={videoJsOptions}
+                  onReady={handlePlayerReady}
+                />
+              </Suspense>
             </Box>
 
             {/* Video Metadata & Controller Buttons */}
