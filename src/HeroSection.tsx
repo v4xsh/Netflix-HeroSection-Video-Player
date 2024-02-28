@@ -59,6 +59,7 @@ function HeroSection() {
     }
   }, []);
 
+  // OffSetTop logic
   const isOffset = useOffSetTop(window.innerWidth * 0.5625);
   useEffect(() => {
     if (playerRef.current) {
@@ -101,6 +102,7 @@ function HeroSection() {
               position: "absolute",
             }}
           >
+            {/* Video Player */}
             <Box
               sx={{
                 top: 0,
@@ -144,6 +146,7 @@ function HeroSection() {
               />
             </Box>
 
+            {/* Video Metadata & Controller Buttons */}
             <Box
               sx={{
                 position: "absolute",
