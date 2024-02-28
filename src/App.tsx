@@ -1,11 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-import { Box, Button } from "@mui/material";
+import { Box, Button, Stack } from "@mui/material";
 import videojs from "video.js";
 import Player from "video.js/dist/types/player";
 
 import VideoJsPlayer from "./components/common/VideoJsPlayer";
 import useOffSetTop from "./hooks/useOffSetTop";
+import Logo from "./components/assets/Logo";
+import Navbar from "./components/common/ui/Navbar";
 
 function App() {
   const playerRef = useRef<Player | null>(null);
@@ -71,15 +73,12 @@ function App() {
           sx={{
             position: "absolute",
             top: 0,
-            zIndex: 3,
-            bgcolor: "#141414",
-            width: "100%",
-            p: "10px 20px",
           }}
         >
-          <Button sx={{ color: "white" }} onClick={() => handleMute(muted)}>
+          {/* <Button sx={{ color: "white" }} onClick={() => handleMute(muted)}>
             {muted ? "Unmute" : "Mute"}
-          </Button>
+          </Button> */}
+          <Navbar />
         </Box>
         <Box
           sx={{
@@ -107,6 +106,21 @@ function App() {
                 position: "absolute",
               }}
             >
+              <Box
+                sx={{
+                  // background: "rgb(20,20,20)",
+                  background:
+                    "linearGradient(180deg, rgba(20,20,20,1) 0%, rgba(41,41,41,1) 61%, rgba(0,212,255,0) 100%)",
+                  backgroundRepeat: "repeat-x",
+                  backgroundPosition: "0px top",
+                  backgroundSize: "100% 100%",
+                  top: 0,
+                  position: "absolute",
+                  height: "20.7vw",
+                  opacity: 1,
+                  width: "100%",
+                }}
+              />
               <VideoJsPlayer
                 options={videoJsOptions}
                 onReady={handlePlayerReady}
