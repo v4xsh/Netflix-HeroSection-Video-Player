@@ -79,6 +79,7 @@ function App() {
           sx={{
             position: "absolute",
             top: 0,
+            zIndex: 11,
           }}
         >
           <Navbar />
