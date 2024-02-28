@@ -14,12 +14,15 @@ import SearchIcon from "@mui/icons-material/Search";
 import Logo from "../../assets/Logo";
 
 export default function Navbar() {
+  // State to track the Menu bar
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
+  // Handle Menu Open
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
   };
 
+  // Handle Menu Close
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
@@ -45,7 +48,10 @@ export default function Navbar() {
           useFlexGap
           flexWrap="wrap"
         >
+          {/* Logo */}
           <Logo sx={{ mr: 2, cursor: "pointer" }} />
+
+          {/* Nav bar items */}
           {["My List", "Movies", "Tv Shows"].map((page) => (
             <Box sx={{ cursor: "pointer" }} key={page}>
               {page}
@@ -60,7 +66,10 @@ export default function Navbar() {
           alignItems="center"
           flexWrap="wrap"
         >
+          {/* Search Icon */}
           <SearchIcon sx={{ cursor: "pointer" }} />
+
+          {/* Menu and User Icon */}
           <Box>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

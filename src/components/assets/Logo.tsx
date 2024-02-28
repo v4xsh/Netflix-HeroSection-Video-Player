@@ -1,4 +1,6 @@
 import Box, { BoxProps } from "@mui/material/Box";
+
+// Download the Netflix logo and place it in the assets folder inside src
 import NetflixLogo from "../../assets/netflix-logo.svg";
 
 export default function Logo({ sx }: BoxProps) {
