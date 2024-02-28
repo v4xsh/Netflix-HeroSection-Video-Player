@@ -1,26 +1,32 @@
-import { forwardRef } from "react";
 import Typography, { TypographyProps } from "@mui/material/Typography";
+import { ReactNode } from "react";
 
-const MaxLineTypography = forwardRef<
-  HTMLDivElement,
-  TypographyProps & { maxLine: number }
->(({ maxLine, children, sx, ...others }, ref) => {
+interface MaxLineTypographyProps extends TypographyProps {
+  maxLine: number;
+  children: ReactNode;
+}
+
+const MaxLineTypography = ({
+  maxLine,
+  children,
+  ...others
+}: MaxLineTypographyProps) => {
+  console.log(others, 14);
+
   return (
     <Typography
-      ref={ref}
       sx={{
         overflow: "hidden",
         textOverflow: "ellipsis",
         display: "-webkit-box",
         WebkitLineClamp: maxLine,
         WebkitBoxOrient: "vertical",
-        ...sx,
       }}
       {...others}
     >
       {children}
     </Typography>
   );
-});
+};
 
 export default MaxLineTypography;

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-import { Box, Button, Stack } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import videojs from "video.js";
 import Player from "video.js/dist/types/player";
 
@@ -15,7 +15,7 @@ import MoreInfoButton from "./components/common/ui/MoreInfoButton";
 import MaturityRate from "./components/MaturityRate";
 import NetflixIconButton from "./components/NetflixIconButton";
 
-function App() {
+function HeroSection() {
   const playerRef = useRef<Player | null>(null);
 
   const videoJsOptions = useMemo(
@@ -168,13 +168,13 @@ function App() {
                 }}
               >
                 <MaxLineTypography variant="h2" maxLine={1} color="#fff">
-                  Lorem ipsum
+                  React great again?
                 </MaxLineTypography>
                 <MaxLineTypography variant="h5" maxLine={3} color="#fff">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id
-                  unde repudiandae hic sunt mollitia, quo quaerat quisquam
-                  maxime laborum modi porro voluptatum possimus aliquam quidem
-                  ipsum eum voluptate ducimus perferendis!
+                  Let's take a first look at React 19 and a variety of changes
+                  will improve the developer experience. We compare React's
+                  changes to other JavaScript frameworks like Svelte, Vue, and
+                  Angular.
                 </MaxLineTypography>
                 <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
                   <PlayButton size="large" />
@@ -209,4 +209,4 @@ function App() {
   );
 }
 
-export default App;
+export default HeroSection;
